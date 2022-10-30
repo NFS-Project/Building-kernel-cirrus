@@ -1,6 +1,6 @@
 env:
     DEVICE_CODENAME: rosy
-    BUILD_USER: rosy
+    BUILD_USER: xiaomi
     BUILD_HOST: nfs-projects
     CIRRUS_CLONE_DEPTH: 1
     CIRRUS_WORKING_DIR: /tmp/cirrus-ci-build
