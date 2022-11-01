@@ -94,6 +94,7 @@ function push() {
 🐧 UTS version: $UTS_VERSION
 💡 Compiler: $TOOLCHAIN_VERSION
 ==========================
+🔋 For all change look in: <a href=\"$KERNEL_SOURCE/commits/$KERNEL_BRANCH\">Here</a>
 Compile took $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) second(s)."
 }
 # Find Error

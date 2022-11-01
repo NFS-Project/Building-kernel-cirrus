@@ -2,6 +2,10 @@ env:
     DEVICE_CODENAME: rosy
     BUILD_USER: xiaomi
     BUILD_HOST: rosy
+    KERNEL_SOURCE: https://github.com/NFS-Project/android_kernel_xiaomi_rosy
+    KERNEL_BRANCH: thirteen
+    TOOLCHAIN_SOURCE: https://pf.osdn.net/gitroot/n/nf/nfs86/NFS-clang.git
+    TOOLCHAIN_BRANCH: master
     CIRRUS_CLONE_DEPTH: 1
     CIRRUS_WORKING_DIR: /tmp/cirrus-ci-build
     ANYKERNEL: "https://github.com/NFS-Project/AnyKernel3.git"
