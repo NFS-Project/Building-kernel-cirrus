@@ -1,7 +1,7 @@
 env:
     DEVICE_CODENAME: rosy
     BUILD_USER: xiaomi
-    BUILD_HOST: nfs-projects
+    BUILD_HOST: rosy
     CIRRUS_CLONE_DEPTH: 1
     CIRRUS_WORKING_DIR: /tmp/cirrus-ci-build
     ANYKERNEL: "https://github.com/NFS-Project/AnyKernel3.git"
