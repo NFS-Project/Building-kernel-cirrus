@@ -2,7 +2,7 @@
 
 # Main Declaration
 function env() {
-export KERNEL_NAME=MRT-Kernel-CLANG
+export KERNEL_NAME=MRT-Kernel
 KERNEL_ROOTDIR=$CIRRUS_WORKING_DIR/$DEVICE_CODENAME
 DEVICE_DEFCONFIG=rosy-perf_defconfig
 CLANG_ROOTDIR=$CIRRUS_WORKING_DIR/CLANG
@@ -64,9 +64,7 @@ make -j$(nproc) ARCH=arm64 O=out \
     HOSTCXX=${CLANG_ROOTDIR}/bin/clang++ \
     HOSTLD=${CLANG_ROOTDIR}/bin/ld.lld \
     CROSS_COMPILE=${CLANG_ROOTDIR}/bin/aarch64-linux-gnu- \
-    CROSS_COMPILE_ARM32=${CLANG_ROOTDIR}/bin/arm-linux-gnueabi- \
-    LLVM=1 \
-    HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
+    CROSS_COMPILE_ARM32=${CLANG_ROOTDIR}/bin/arm-linux-gnueabi-
    if ! [ -a "$IMAGE" ]; then
 	finerr
    fi
@@ -84,7 +82,7 @@ function push() {
         -F "parse_mode=html" \
         -F caption="
 ==========================
-👤 Owner: $CIRRUS_REPO_OWNER
+<b>👤 Owner:</b> <code>$CIRRUS_REPO_OWNER</code>
 🏚️ Linux version: $KERNEL_VERSION
 🌿 Branch: $BRANCH
 🎁 Top commit: $LATEST_COMMIT
