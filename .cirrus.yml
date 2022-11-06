@@ -3,7 +3,7 @@ env:
     BUILD_USER: xiaomi
     BUILD_HOST: rosy
     KERNEL_SOURCE: https://github.com/NFS-Project/android_kernel_xiaomi_rosy
-    KERNEL_BRANCH: thirteen
+    KERNEL_BRANCH: Test
     TOOLCHAIN_SOURCE: https://pf.osdn.net/gitroot/n/nf/nfs86/NFS-clang.git
     TOOLCHAIN_BRANCH: master
     CIRRUS_CLONE_DEPTH: 1
