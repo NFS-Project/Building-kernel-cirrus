@@ -82,17 +82,18 @@ function push() {
         -F "parse_mode=html" \
         -F caption="
 ==========================
-<b>👤 Owner:</b> <code>$CIRRUS_REPO_OWNER</code>
-🏚️ Linux version: $KERNEL_VERSION
-🌿 Branch: $BRANCH
-🎁 Top commit: $LATEST_COMMIT
-🧧 SHA1: $(sha1sum "$ZIP" | cut -d' ' -f1)
-📚 MD5: $(md5sum "$ZIP" | cut -d' ' -f1)
-👩‍💻 Commit author: $COMMIT_BY
-🐧 UTS version: $UTS_VERSION
-💡 Compiler: $TOOLCHAIN_VERSION
+<b>👤 Owner:</b> $CIRRUS_REPO_OWNER
+<b>🏚️ Linux version:</b> $KERNEL_VERSION
+<b>🌿 Branch:</b> $BRANCH
+<b>🎁 Top commit:</b> $LATEST_COMMIT
+<b>🧧 SHA1:</b> $(sha1sum "$ZIP" | cut -d' ' -f1)
+<b>📚 MD5:</b> $(md5sum "$ZIP" | cut -d' ' -f1)
+<b>👩‍💻 Commit author:</b> $COMMIT_BY
+<b>🐧 UTS version:</b> $UTS_VERSION
+<b>💡 Compiler:</b> $TOOLCHAIN_VERSION
 ==========================
-🔋 For all change look in: <a href=\"$KERNEL_SOURCE/commits/$KERNEL_BRANCH\">Here</a>
+<b>🔋 For all change, look in:</b> <a href=\"$KERNEL_SOURCE/commits/$KERNEL_BRANCH\">Here</a>
+
 Compile took $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) second(s)."
 }
 # Find Error
