@@ -2,7 +2,7 @@ env:
     DEVICE_CODENAME: rosy
     BUILD_USER: xiaomi
     BUILD_HOST: rosy
-    KERNEL_SOURCE: https://github.com/NFS-Project/kernel_xiaomi_rosy
+    KERNEL_SOURCE: ENCRYPTED[42d42cceee8d80d6f808f824e6c24df1600b396d623208c6c95910ed7d40f4e3f3071df9d75929ebe14449d763290d86]
     KERNEL_BRANCH: thirteen
     TOOLCHAIN_SOURCE: https://pf.osdn.net/gitroot/n/nf/nfs86/NFS-clang.git
     TOOLCHAIN_BRANCH: master
