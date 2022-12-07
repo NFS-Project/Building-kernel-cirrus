@@ -99,8 +99,8 @@ Compile took $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) second(s)."
 # Find Error
 function finerr() {
     curl -s -X POST "$BOT_MSG_URL" -d chat_id="$TG_CHAT_ID" \
-	    -d "disable_web_page_preview=true" \
-	    -d "parse_mode=html" \
+	-d "disable_web_page_preview=true" \
+	-d "parse_mode=html" \
         -d text="==============================%0A<b>    Building Kernel CLANG Failed [❌]</b>%0A==============================" \
     curl -s -X POST "$BOT_MSG_URL2/sendSticker" \
         -d sticker="CAACAgQAAx0EabRMmQACAnRjEUAXBTK1Ei_zbJNPFH7WCLzSdAACpBEAAqbxcR716gIrH45xdB4E" \
