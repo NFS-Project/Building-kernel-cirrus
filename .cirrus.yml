@@ -15,6 +15,7 @@ env:
 task:
   name: "Kernel Build.."
   timeout_in: 1h
+  stateful: true
   container:
       image: anggit86/docker:cirrus
       cpu: 8
