@@ -2,22 +2,18 @@ env:
     DEVICE_CODENAME: rosy
     BUILD_USER: NFSproject
     BUILD_HOST: NFS86
-    KERNEL_SOURCE: ENCRYPTED[42d42cceee8d80d6f808f824e6c24df1600b396d623208c6c95910ed7d40f4e3f3071df9d75929ebe14449d763290d86]
-    KERNEL_BRANCH: test
-    TOOLCHAIN_SOURCE: https://pf.osdn.net/gitroot/n/nf/nfs86/NFS-clang.git
-    TOOLCHAIN_BRANCH: master
+    KERNEL_SOURCE: https://github.com/AnGgIt88/Xiaomi_Kernel_OpenSource
+    KERNEL_BRANCH: riva-n-oss
     CIRRUS_CLONE_DEPTH: 1
     CIRRUS_WORKING_DIR: /tmp/cirrus-ci-build
     ANYKERNEL: "https://github.com/NFS-Project/AnyKernel3.git"
-    TG_TOKEN: "ENCRYPTED[!d52ab360b3e8517a18c20d86dac6f328c67670b9ed96c668a5871179c40a24f1bd8c92e233558c1beeda79bad6cf316d!]"
-    TG_CHAT_ID: "ENCRYPTED[8ee859e6807e5fe3fa411063db56dc86785470861e2a73b73affd28d1797d94d2fe607808fa7bf9db96b3e236e3be31c]"
 
 task:
   name: "Kernel Build.."
   timeout_in: 2h
   stateful: true
   container:
-      image: anggit86/docker:cirrus
+      image: anggit86/ubuntu:xenial
       cpu: 8
       memory: 32G
 
@@ -25,5 +21,4 @@ task:
       - ./download.sh
 
   Build_kernel_Clang_script:
-      - ./clang.sh
-      - ./done.sh
+      - ./compile.sh
