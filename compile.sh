@@ -58,7 +58,7 @@ function push() {
 
     # DL_LINK=$(cat link.txt | grep Download | cut -d\  -f3)
     MIRROR_LINK=$(cat mirror.txt | grep Download | cut -d\  -f1)
-
+    echo Download=$MIRROR_LINK
 }
 
 
