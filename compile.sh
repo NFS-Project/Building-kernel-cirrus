@@ -48,10 +48,6 @@ function push() {
     cd $CIRRUS_WORKING_DIR/AnyKernel
     zip -r9 $KERNEL_NAME-$DEVICE_CODENAME-${DATE}.zip *
     ZIP=$(echo *.zip)
-    # Upload to oshi.at
-    if [ -z "$TIMEOUT" ];then
-        TIMEOUT=20160
-    fi
 
     # Upload to WeTransfer
     # NOTE: the current Docker Image, "registry.gitlab.com/sushrut1101/docker:latest", includes the 'transfer' binary by Default
