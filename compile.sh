@@ -51,12 +51,12 @@ function push() {
 
     # Upload to WeTransfer
     # NOTE: the current Docker Image, "registry.gitlab.com/sushrut1101/docker:latest", includes the 'transfer' binary by Default
-    transfer wet $ZIP > link.txt || { echo "ERROR: Failed to Upload the Build!" && exit 1; }
+    # transfer wet $ZIP > link.txt || { echo "ERROR: Failed to Upload the Build!" && exit 1; }
 
     # Mirror to oshi.at
     curl -T $ZIP https://oshi.at/${FILENAME}/${TIMEOUT} > mirror.txt || { echo "WARNING: Failed to Mirror the Build!"; }
 
-    DL_LINK=$(cat link.txt | grep Download | cut -d\  -f3)
+    # DL_LINK=$(cat link.txt | grep Download | cut -d\  -f3)
     MIRROR_LINK=$(cat mirror.txt | grep Download | cut -d\  -f1)
 
 }
