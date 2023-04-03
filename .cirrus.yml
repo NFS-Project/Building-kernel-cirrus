@@ -3,7 +3,7 @@ env:
     BUILD_USER: NFSproject
     BUILD_HOST: NFS86
     KERNEL_SOURCE: https://github.com/AnGgIt88/Xiaomi_Kernel_OpenSource
-    KERNEL_BRANCH: riva-n-oss
+    KERNEL_BRANCH: riva-o-oss
     CIRRUS_CLONE_DEPTH: 1
     CIRRUS_WORKING_DIR: /tmp/cirrus-ci-build
     ANYKERNEL: "https://github.com/NFS-Project/AnyKernel3.git"
