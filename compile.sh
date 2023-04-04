@@ -10,6 +10,8 @@ DATE=$(date +"%F-%S")
 START=$(date +"%s")
 export KBUILD_BUILD_USER=$BUILD_USER
 export KBUILD_BUILD_HOST=$BUILD_HOST
+export BOT_MSG_URL="https://api.telegram.org/bot$TG_TOKEN/sendMessage"
+export BOT_MSG_URL2="https://api.telegram.org/bot$TG_TOKEN"
 }
 # Checking environtment
 # Warning !! Dont Change anything there without known reason.
@@ -30,6 +32,12 @@ echo DEVICE_DEFCONFIG = ${DEVICE_DEFCONFIG}
 echo KERNEL_ROOTDIR = ${KERNEL_ROOTDIR}
 echo ================================================
 }
+tg_post_msg() {
+  curl -s -X POST "$BOT_MSG_URL" -d chat_id="$TG_CHAT_ID" \
+  -d "disable_web_page_preview=true" \
+  -d "parse_mode=html" \
+  -d text="$1"
+}
 # Peocces Compile
 function compile() {
 cd ${KERNEL_ROOTDIR}
@@ -38,7 +46,7 @@ make -j$(nproc) ARCH=arm64 O=out \
     CROSS_COMPILE=aarch64-linux-gnu- \
     CROSS_COMPILE_ARM32=arm-linux-gnueabi-
    if ! [ -a "$IMAGE" ]; then
-	echo BUILD KERNEL ERROR
+	finerr
    fi
 	git clone --depth=1 $ANYKERNEL $CIRRUS_WORKING_DIR/AnyKernel
 	cp $IMAGE $CIRRUS_WORKING_DIR/AnyKernel
@@ -48,19 +56,26 @@ function push() {
     cd $CIRRUS_WORKING_DIR/AnyKernel
     zip -r9 $KERNEL_NAME-$DEVICE_CODENAME-${DATE}.zip *
     ZIP=$(echo *.zip)
-
-    # Upload to WeTransfer
-    # NOTE: the current Docker Image, "registry.gitlab.com/sushrut1101/docker:latest", includes the 'transfer' binary by Default
-    # transfer wet $ZIP > link.txt || { echo "ERROR: Failed to Upload the Build!" && exit 1; }
-
-    # Mirror to oshi.at
-    curl -T $ZIP https://oshi.at/${FILENAME}/${TIMEOUT} > mirror.txt || { echo "WARNING: Failed to Mirror the Build!"; }
-
-    # DL_LINK=$(cat link.txt | grep Download | cut -d\  -f3)
-    MIRROR_LINK=$(cat mirror.txt | grep Download | cut -d\  -f1)
-    echo Download=$MIRROR_LINK
+    curl -F document=@$ZIP "https://api.telegram.org/bot$TG_TOKEN/sendDocument" \
+        -F chat_id="$TG_CHAT_ID" \
+        -F "disable_web_page_preview=true" \
+        -F "parse_mode=html" \
+        -F caption="
+Compile took $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) second(s)."
 }
-
+# Find Error
+function finerr() {
+    wget https://api.cirrus-ci.com/v1/task/$CIRRUS_TASK_ID/logs/Build_kernel_Clang.log -O build.log
+	curl -F document=@build.log "https://api.telegram.org/bot$TG_TOKEN/sendDocument" \
+        -F chat_id="$TG_CHAT_ID" \
+        -F "disable_web_page_preview=true" \
+        -F "parse_mode=html" \
+        -F caption="==============================%0A<b>    Building Kernel CLANG Failed [❌]</b>%0A<b>        Jiancog Tenan 🤬</b>%0A==============================" \
+    curl -s -X POST "$BOT_MSG_URL2/sendSticker" \
+        -d sticker="CAACAgQAAx0EabRMmQACAnRjEUAXBTK1Ei_zbJNPFH7WCLzSdAACpBEAAqbxcR716gIrH45xdB4E" \
+        -d chat_id="$TG_CHAT_ID"
+    exit 1
+}
 
 env
 check
