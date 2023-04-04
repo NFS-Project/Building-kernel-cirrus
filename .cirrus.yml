@@ -1,7 +1,7 @@
 env:
     DEVICE_CODENAME: rosy
-    BUILD_USER: NFSproject
-    BUILD_HOST: NFS86
+    BUILD_USER: nfs-server
+    BUILD_HOST: builder
     KERNEL_SOURCE: https://github.com/AnGgIt88/Xiaomi_Kernel_OpenSource
     KERNEL_BRANCH: riva-o-oss
     CIRRUS_CLONE_DEPTH: 1
