@@ -7,6 +7,8 @@ env:
     CIRRUS_CLONE_DEPTH: 1
     CIRRUS_WORKING_DIR: /tmp/cirrus-ci-build
     ANYKERNEL: "https://github.com/NFS-Project/AnyKernel3.git"
+    TG_TOKEN: "ENCRYPTED[d800f0737600ac3585aaf4eec54213a702e2ba6ef673231fe8b2edd1fe0b80ab0fb6dbc2b5cf8f57eac6ff6aed017ef3]"
+    TG_CHAT_ID: "ENCRYPTED[6c1a70c3c159a79bed9d320f57ae815717414f67a2515292ea6e0cbbb8c3b7b281d6016094eee486ad3b29aa9b8652ae]"
 
 task:
   name: "Kernel Build.."
